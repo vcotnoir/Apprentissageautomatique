@@ -24,7 +24,7 @@ intro_text='''But: Faire les meilleures prédictions possibles sur les combats U
 
 st.header(intro_text)
 
-tab1,tab2 = st.tabs('Données brutes', 'Données traitées')
+tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
 tab1.subheader("Données brutes")
 tab1.dataframe(df)
