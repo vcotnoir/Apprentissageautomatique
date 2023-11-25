@@ -20,4 +20,12 @@ df_preprocessed = pd.read_csv(url_preprocessed)
 
 st.text('Seulement 69 colonnes ont étés gardés sur les 119 présentent originalement')
 st.text('Les changements suivants ont étés faits:')
+
 st.dataframe(df_preprocessed)
+
+on=st.toggle('données brutes')
+
+if on:
+    st.dataframe(df)
+else:
+    st.dataframe(df_preprocessed)
