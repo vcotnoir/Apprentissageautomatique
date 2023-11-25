@@ -15,10 +15,9 @@ shape_df_processed=df_preprocessed.shape
 
 st.title('Apprentissage automatique - prédictions UFC')
 
-intro_text='''Faire les meilleures prédictions possibles  
-            sur les combats UFC '''
+intro_text='''Faire les meilleures prédictions possibles sur les combats UFC '''
 
-st.markdown(intro_text)
+st.header(intro_text)
 
 on=st.toggle('appuyez pour voir les données traitées')
 with st.container():
@@ -31,4 +30,9 @@ with st.container():
             st.dataframe(df)
             st.write(shape_df)
 
-st.write('Outside container')
+Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
+- Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
+- Les données en liens avec les cotes pour faire des paris furent retirées
+- 
+'''
+st.markdown(Explanation_text_traitement_donnes)
