@@ -21,13 +21,12 @@ intro_text='''Faire les meilleures prédictions possibles
 st.markdown(intro_text)
 
 on=st.toggle('appuyez pour voir les données traitées')
-
-if on:
-    st.header('Données traitées')
-    st.dataframe(df_preprocessed)
-    st.write(shape_df_processed)
-
-else:
-    st.header('Données brutes')
-    st.dataframe(df)
-    st.write(shape_df)
+with st.container():
+    if on:
+            st.header('Données traitées')
+            st.dataframe(df_preprocessed)
+            st.write(shape_df_processed)
+    else:
+            st.header('Données brutes')
+            st.dataframe(df)
+            st.write(shape_df)
