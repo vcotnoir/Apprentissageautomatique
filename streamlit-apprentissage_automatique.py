@@ -15,6 +15,8 @@ shape_df_colonnes=shape_df[1]
 shape_df_lignes=shape_df[0]
 
 shape_df_processed=df_preprocessed.shape
+shape_df_processed_colonnes=shape_df[1]
+shape_df_processed_lignes=shape_df[0]
 
 st.title('Apprentissage automatique - prédictions UFC')
 
@@ -27,7 +29,7 @@ with st.container():
     if on:
             st.header('Données traitées')
             st.dataframe(df_preprocessed)
-            st.write(shape_df_processed)
+            st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
     else:
             st.header('Données brutes')
             st.dataframe(df)
