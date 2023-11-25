@@ -11,6 +11,8 @@ url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageauto
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 shape_df=df.shape
+shape_df_colonnes=shape_df[1]
+shape_df_lignes=shape_df[0]
 
 shape_df_processed=df_preprocessed.shape
 
@@ -29,7 +31,7 @@ with st.container():
     else:
             st.header('Données brutes')
             st.dataframe(df)
-            st.write(print('Les données brutes ont {} lignes et {}'.format(shape_df[0],shape_df[1])))
+            st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
 
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
 - Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
