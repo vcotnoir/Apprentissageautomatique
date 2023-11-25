@@ -34,19 +34,6 @@ with st.container():
     tab2.dataframe(df_preprocessed)
     tab2.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
 
-
-
-#on=st.toggle('appuyez pour voir les données traitées')
-#with st.container():
-    if on:
-            st.header('Données traitées')
-            st.dataframe(df_preprocessed)
-            st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
-    else:
-            st.header('Données brutes')
-            st.dataframe(df)
-            st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
-
 st.divider()
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
 - Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
