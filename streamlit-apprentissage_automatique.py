@@ -23,7 +23,7 @@ st.text('Les changements suivants ont étés faits:')
 
 st.dataframe(df_preprocessed)
 
-on=st.toggle('données brutes')
+on=st.toggle('appuyez pour voir les données traitées')
 
 if on:
     st.dataframe(df)
