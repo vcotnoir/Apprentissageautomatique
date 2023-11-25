@@ -32,9 +32,9 @@ with st.container():
         st.dataframe(df)
         st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
     with tab2:
-        st.tab2.subheader("Données traitées")
-        st.tab2.dataframe(df_preprocessed)
-        st.tab2.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+        st.subheader("Données traitées")
+        st.dataframe(df_preprocessed)
+        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
 
 st.divider()
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
