@@ -11,7 +11,7 @@ url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageauto
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 shape_df=df.shape
-shape_dr_processed=df_preprocessed.shape
+shape_df_processed=df_preprocessed.shape
 
 st.title('Apprentissage automatique - prédictions UFC')
 
@@ -25,8 +25,9 @@ on=st.toggle('appuyez pour voir les données traitées')
 if on:
     st.header('Données traitées')
     st.dataframe(df_preprocessed)
-
+    st.write(shape_df_processed)
 
 else:
     st.header('Données brutes')
     st.dataframe(df)
+    st.write(shape_df)
