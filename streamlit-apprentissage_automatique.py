@@ -27,13 +27,14 @@ st.header(intro_text)
 with st.container():
     tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
-    tab1.subheader("Données brutes")
-    tab1.dataframe(df)
-    tab1.text("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
-    
-    tab2.subheader("Données traitées")
-    tab2.dataframe(df_preprocessed)
-    tab2.text("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+    with tab1:
+        st.subheader("Données brutes")
+        st.dataframe(df)
+        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
+    with tab2:
+        st.tab2.subheader("Données traitées")
+        st.tab2.dataframe(df_preprocessed)
+        st.tab2.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
 
 st.divider()
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
