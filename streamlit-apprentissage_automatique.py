@@ -15,8 +15,8 @@ shape_df_colonnes=shape_df[1]
 shape_df_lignes=shape_df[0]
 
 shape_df_processed=df_preprocessed.shape
-shape_df_processed_colonnes=shape_df[1]
-shape_df_processed_lignes=shape_df[0]
+shape_df_processed_colonnes=shape_df_processed[1]
+shape_df_processed_lignes=shape_df_processed[0]
 
 st.title('Apprentissage automatique - prédictions UFC')
 
@@ -35,6 +35,7 @@ with st.container():
             st.dataframe(df)
             st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
 
+st.divider()
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
 - Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
 - Les données en liens avec les cotes pour faire des paris furent retirées
