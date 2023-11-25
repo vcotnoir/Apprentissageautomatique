@@ -30,3 +30,5 @@ with st.container():
             st.header('Données brutes')
             st.dataframe(df)
             st.write(shape_df)
+
+st.write('Outside container')
