@@ -24,13 +24,20 @@ intro_text='''But: Faire les meilleures prédictions possibles sur les combats U
 
 st.header(intro_text)
 
-tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
-
-tab1.subheader("Données brutes")
-tab1.dataframe(df)
-
-on=st.toggle('appuyez pour voir les données traitées')
 with st.container():
+    tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
+
+    tab1.subheader("Données brutes")
+    tab1.dataframe(df)
+    tab1.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
+    tab2.subheader("Données traitées")
+    tab2.dataframe(df_preprocessed)
+    tab2.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+
+
+
+#on=st.toggle('appuyez pour voir les données traitées')
+#with st.container():
     if on:
             st.header('Données traitées')
             st.dataframe(df_preprocessed)
