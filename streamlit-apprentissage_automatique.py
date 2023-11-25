@@ -13,19 +13,17 @@ st.header('Voici les données brutes:')
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
 df = pd.read_csv(url)
 
-st.dataframe(df)
-
 url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/UFC_dataprocessed.csv'
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 st.text('Seulement 69 colonnes ont étés gardés sur les 119 présentent originalement')
-st.text('Les changements suivants ont étés faits:')
-
-st.dataframe(df_preprocessed)
+st.text('Les changements suivants ont étés faits:') 
 
 on=st.toggle('appuyez pour voir les données traitées')
 
 if on:
-    st.dataframe(df)
-else:
+    st.header('Données prétraitées')
     st.dataframe(df_preprocessed)
+else:
+    st.header('Données brutes')
+    st.dataframe(df)
