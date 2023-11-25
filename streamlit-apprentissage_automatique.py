@@ -15,3 +15,9 @@ df = pd.read_csv(url)
 
 st.dataframe(df)
 
+url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/UFC_dataprocessed.csv'
+df_preprocessed = pd.read_csv(url_preprocessed)
+
+st.text('Seulement 69 colonnes ont étés gardés sur les 119 présentent originalement')
+st.text('Les changements suivants ont étés faits:')
+st.dataframe(df_preprocessed)
