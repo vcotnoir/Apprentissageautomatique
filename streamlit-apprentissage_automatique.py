@@ -11,6 +11,7 @@ url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageauto
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 shape_df=df.shape
+
 shape_df_processed=df_preprocessed.shape
 
 st.title('Apprentissage automatique - prédictions UFC')
@@ -28,7 +29,7 @@ with st.container():
     else:
             st.header('Données brutes')
             st.dataframe(df)
-            st.write(shape_df)
+            st.write(print('Les données brutes ont {} lignes et {}'.format(shape_df[0],shape_df[1])))
 
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
 - Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
@@ -36,3 +37,5 @@ Explanation_text_traitement_donnes='''Les principales modifications sont les sui
 - 
 '''
 st.markdown(Explanation_text_traitement_donnes)
+
+
