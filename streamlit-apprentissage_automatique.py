@@ -99,11 +99,11 @@ with st.container():
         confusion.set_title('Confusion Matrix (naive)'); 
         confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
         st.pyplot(confusion.get_figure())
-    with tab4:
+    with tab4: #MLP de base
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
         st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
-    with tab5:
+    with tab5: #gridsearch
         plt.clf()
         cm2=confusion_matrix(Y_test,Y_test_naive)
         confusion2= sns.heatmap(cm2, annot=True, fmt='g')
@@ -121,10 +121,42 @@ with st.container():
        'momentum':[0.1,0.3,0.6,0.9],
        'max_iter':[4000]}'''
         
-        st.write("Voici les paramétres utilisés pour faire l'entrainement")
+        st.write("Voici les paramètres utilisés pour faire l'entrainement")
         st.code(code_grid,language='python')
-    with tab6:
-        st.subheader("Données brutes")
+    with tab6: #randomsearch
+        plt.clf()
+        cm2=confusion_matrix(Y_test,Y_test_naive)
+        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
+        confusion2.set_title('Confusion Matrix (naive)'); 
+        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion.get_figure())
+
+        st.write("une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
+        col1, col2= st.columns(2)
+
+        with col1:
+            code_getthatint='''random.seed(12)
+                                def getthatint(lower=1,upper=1000,count=30):
+                                random.seed(12)
+                                getthatlist=[]
+                                for i in range(count):
+                                    x = random.randint(lower,upper)
+                                    getthatlist.append(x)
+                                return getthatlist'''
+            st.code(code_getthatint,language='python')
+        
+        with col2:
+            code_getthatfloat='''random.seed(12)
+                                    def getthatfloat(lower=0.0001,upper=1,count=30):
+                                    random.seed(12)
+                                    getthatlist=[]
+                                    for i in range(count):
+                                        x = round(random.uniform(lower,upper),4)
+                                        getthatlist.append(x)
+                                    return getthatlist'''
+            st.code(code_getthatfloat,language='python')
     with tab7:
         st.subheader("Données brutes")
     with tab8:
