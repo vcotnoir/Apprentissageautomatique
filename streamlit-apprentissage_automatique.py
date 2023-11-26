@@ -157,7 +157,7 @@ x = round(random.uniform(lower,upper),4)
 getthatlist.append(x)
 return getthatlist'''
             st.code(code_getthatfloat,language='python')
-        st.write("Des données furent générées et utilisés pour entrainer le MLP en choisissant 50 itérations différentes")
+        st.write("Des données furent générées et utilisées pour entrainer le MLP en choisissant 50 combinaisons différentes")
         code_randsearch='''ufc = MLPClassifier(random_state=42)
 hidden_random=getthatint(10,300,50)
 alpha_random=getthatfloat(0.0001,1,50)
