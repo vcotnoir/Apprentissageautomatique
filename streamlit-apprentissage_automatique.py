@@ -1,7 +1,9 @@
-#import seaborn as sns
+import seaborn as sns
+import matplotlib.pyplot as plt  
 import streamlit as st
 import pandas as pd
 import numpy as np
+from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 
 #importation des données
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
@@ -13,7 +15,7 @@ df_preprocessed = pd.read_csv(url_preprocessed)
 url_Naif = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test_naive.csv'
 df_naif = pd.read_csv(url_preprocessed)
 
-url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Apprentissage%20automatique_Y_test.csv'
+url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test.csv'
 df_Y_test = pd.read_csv(url_preprocessed)
 
 shape_df=df.shape
@@ -75,11 +77,13 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        
-        
-        st.subheader("Données brutes")
-        st.dataframe(df)
-        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
+        st.write(cm=confusion_matrix(Y_test,Y_test_naive)
+                ax= plt.subplot()
+                sns.heatmap(cm, annot=True, fmt='g', ax=ax)  #annot=True to annotate cells, ftm='g' to disable scientific notation
+
+                ax.set_xlabel('Predicted winner');ax.set_ylabel('True winner'); 
+                ax.set_title('Confusion Matrix (naive)'); 
+                ax.xaxis.set_ticklabels(['Blue', 'Red']); ax.yaxis.set_ticklabels(['Blue', 'Red']);)
     with tab4:
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
