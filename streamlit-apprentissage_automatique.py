@@ -174,7 +174,21 @@ param_random={'hidden_layer_sizes': hidden_random,
 # entrainement du modèle
 clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         st.code(code_randsearch)
-    with tab7:
-        st.subheader("Données brutes")
+    with tab7:#gridsearch
+        plt.clf()
+        cm2=confusion_matrix(Y_test,Y_test_naive)
+        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
+        confusion2.set_title('Confusion Matrix (naive)'); 
+        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion.get_figure())
+
+        st.write('le code suivant fut ensuite utilisé pour créer le modèle')
+        st.code('''from xgboost import XGBClassifier
+ufcboost = XGBClassifier(random_state=42)
+ufcboost.fit(X_train, Y_train)
+test_pred = ufcboost.predict(X_test_df)''')
+
     with tab8:
         st.subheader("Données brutes")
