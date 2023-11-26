@@ -31,9 +31,8 @@ df_xgboost = pd.read_csv(url_preductions_XG)
 url_prediction_MLP = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc_base_pred.csv'
 df_MLP_base = pd.read_csv(url_prediction_MLP)
 
-url_logistique = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/logis_predict.csv'
-df_logistique = pd.read_csv(url_logistique)
-
+url_eli5 = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/eli5_results.csv'
+df_eli5 = pd.read_csv(url_eli5)
 
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
@@ -237,3 +236,15 @@ from sklearn.linear_model import LogisticRegression
 pca=PCA(n_components=2)
 x_train_pca=pca.fit_transform(X_train,Y_train)
 x_test_pca=pca.transform(X_test)''')
+
+
+st.header("Analyse")
+st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performane.")
+st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Randomsaerch) fut obtenue")
+
+plt.clf()
+barplot_eli5=sns.barplot(df_eli5.iloc[:,:10])
+plt.xticks(rotation=30,ha='right')
+plt.title("Poids de l'importance des variables")
+plt.ylabel('Poids')
+st.pyplot(barplot_eli5.get_figure())
