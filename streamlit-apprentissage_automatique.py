@@ -137,7 +137,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
-        st.markdown("Le taux de bonne classification est de **54.1%**")
+        st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -212,6 +212,7 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
+        st.markdown("Le taux de bonne classification est de :green[**57.5%**]")
 
         st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from xgboost import XGBClassifier
@@ -227,4 +228,12 @@ test_pred = ufcboost.predict(X_test_df)''')
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
-        st.pyplot(confusion.get_figure()) 
+        st.pyplot(confusion.get_figure())
+        st.markdown("Le taux de bonne classification est de :red[**57.1%**]")
+
+        st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
+        st.code('''from sklearn.decomposition import PCA
+from sklearn.linear_model import LogisticRegression
+pca=PCA(n_components=2)
+x_train_pca=pca.fit_transform(X_train,Y_train)
+x_test_pca=pca.transform(X_test)''')
