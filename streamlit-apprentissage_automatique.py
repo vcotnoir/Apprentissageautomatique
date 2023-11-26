@@ -61,7 +61,7 @@ Explanation_text_traitement_donnes='''Les principales modifications sont les sui
 st.markdown(Explanation_text_traitement_donnes)
 
 st.header('Analyse exploratoire')
-st.text('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
+st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
 correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
 correlation.set_title('Corrélation entre les variables');
@@ -87,9 +87,7 @@ st.markdown(Process_explnation_mrkdwn)
 st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
 cm=confusion_matrix(Y_test,Y_test_naive)
-ax= plt.subplot()
-sns.heatmap(cm, annot=True, fmt='g', ax=ax);  #annot=True to annotate cells, ftm='g' to disable scientific notation
-
+ax= sns.heatmap(cm, annot=True, fmt='g')
 # labels, title and ticks
 ax.set_xlabel('Predicted winner');ax.set_ylabel('True winner'); 
 ax.set_title('Confusion Matrix (naive)'); 
