@@ -54,10 +54,7 @@ Explanation_text_traitement_donnes='''Les principales modifications sont les sui
 - Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
 - Les données en liens avec les cotes pour faire des paris furent retirées
 - Les combats qui se sont terminés par des égalités furent retirés
-- 
-- 
 '''
-
 st.markdown(Explanation_text_traitement_donnes)
 
 st.header('Analyse exploratoire')
@@ -93,8 +90,6 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        # explication_naive = '''Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre'''
-        # st.markdown(explication_naive)
         plt.clf()
         cm=confusion_matrix(Y_test,Y_test_naive)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
