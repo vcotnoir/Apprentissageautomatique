@@ -91,7 +91,7 @@ ax= sns.heatmap(cm, annot=True, fmt='g')
 # labels, title and ticks
 ax.set_xlabel('Predicted winner');ax.set_ylabel('True winner'); 
 ax.set_title('Confusion Matrix (naive)'); 
-ax.xaxis.set_ticklabels(['Blue', 'Red']); ax.yaxis.set_ticklabels(['Blue', 'Red']);
+ax.xaxis.set_ticklabels(['Blue', 'Red']); ax.yaxis.set_ticklabels(['Blue', 'Red'])
 
 with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
