@@ -112,7 +112,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
-        st.markdown("Le taux de bonne classification est de **57,3%**")
+        st.markdown("Le taux de bonne classification est de **57.3%**")
 
     with mlp: #MLP de base
         plt.clf()
@@ -126,6 +126,8 @@ with st.container():
         st.write('''Toutes les variables de base du MLP de SKlearn ont étés utilisé à l'exception de nombre d'iterations et du "solver" puisque nous avons eu des problèmes de convergence.''') 
         st.write('Voici le code utlisé pour entainer le modèle')
         st.code("ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)")
+        st.markdown("Le taux de bonne classification est de **54.1%**")
+
     with grid: #gridsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_xgboost)
@@ -135,6 +137,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
+        st.markdown("Le taux de bonne classification est de **54.1%**")
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -155,6 +158,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
+        st.markdown("Le taux de bonne classification est de :green[**59,9%**]")
 
         st.write("Une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
         col1, col2= st.columns(2)
