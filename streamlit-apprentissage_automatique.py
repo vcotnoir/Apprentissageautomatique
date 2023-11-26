@@ -121,8 +121,10 @@ with st.container():
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
-        st.pyplot(confusion.get_figure()) 
-
+        st.pyplot(confusion.get_figure())
+        st.write('''Toutes les variables de base du MLP de SKlearn ont étés utilisé à l'exception de nombre d'iterations et du "solver" puisque nous avons eu des problèmes de convergence.''') 
+        st.write('Voici le code utlisé pour entainer le modèle')
+        st.code("ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)")
     with grid: #gridsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_xgboost)
