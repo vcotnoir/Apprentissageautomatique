@@ -108,30 +108,30 @@ with st.container():
         cm=confusion_matrix(Y_test,Y_test_naive)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
-        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-        confusion.set_title('Confusion Matrix (naive)'); 
-        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
 
     with mlp: #MLP de base
         plt.clf()
-        cm2=confusion_matrix(Y_test,df_MLP_base)
-        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        cm=confusion_matrix(Y_test,df_MLP_base)
+        confusion= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
-        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion2.set_title('Confusion Matrix (naive)'); 
-        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion2.get_figure())
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
+        st.pyplot(confusion.get_figure()) 
 
     with grid: #gridsearch
         plt.clf()
-        cm3=confusion_matrix(Y_test,df_xgboost)
-        confusion3= sns.heatmap(cm3, annot=True, fmt='g')
+        cm=confusion_matrix(Y_test,df_xgboost)
+        confusion= sns.heatmap(cm3, annot=True, fmt='g')
         # labels, title and ticks
-        confusion3.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion3.set_title('Confusion Matrix (naive)'); 
-        confusion3.xaxis.set_ticklabels(['Blue', 'Red']); confusion3.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion3.get_figure())
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
+        st.pyplot(confusion.get_figure()) 
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -145,13 +145,13 @@ with st.container():
         st.code(code_grid,language='python')
     with random: #randomsearch
         plt.clf()
-        cm2=confusion_matrix(Y_test,df_MLP_random)
-        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        cm=confusion_matrix(Y_test,df_MLP_random)
+        confusion= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
-        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion2.set_title('Confusion Matrix (naive)'); 
-        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion2.get_figure())
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
+        st.pyplot(confusion.get_figure()) 
 
         st.write("Une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
         col1, col2= st.columns(2)
@@ -198,13 +198,13 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         st.code(code_randsearch)
     with xg:#gridsearch
         plt.clf()
-        cm2=confusion_matrix(Y_test,df_xgboost)
-        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        cm=confusion_matrix(Y_test,df_xgboost)
+        confusion= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
-        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion2.set_title('Confusion Matrix (naive)'); 
-        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion2.get_figure())
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
+        st.pyplot(confusion.get_figure()) 
 
         st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from xgboost import XGBClassifier
@@ -214,10 +214,10 @@ test_pred = ufcboost.predict(X_test_df)''')
 
     with regression:
         plt.clf()
-        cm2=confusion_matrix(Y_test,df_logistique)
-        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        cm=confusion_matrix(Y_test,df_logistique)
+        confusion= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
-        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion2.set_title('Confusion Matrix (naive)'); 
-        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion2.get_figure())
+        confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
+        confusion.set_title('Matrice de confusion'); 
+        confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
+        st.pyplot(confusion.get_figure()) 
