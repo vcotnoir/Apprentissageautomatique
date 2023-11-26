@@ -64,7 +64,7 @@ st.header('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
 correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
-correlation.set_title('Corrélation entre les variables');
+correlation.set_title('Corrélation entre les variables')
 st.pyplot(correlation.get_figure())
 
 st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
