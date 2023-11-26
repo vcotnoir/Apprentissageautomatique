@@ -169,7 +169,9 @@ param_random={'hidden_layer_sizes': hidden_random,
        'batch_size':[256,512],
        'learning_rate_init':learning_rate_init_random,
        'momentum':[0.1,0.3,0.6,0.9],
-       'max_iter':[1000,2000,3000,4000]}'''
+       'max_iter':[1000,2000,3000,4000]}
+
+       clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         st.code(code_randsearch)
     with tab7:
         st.subheader("Données brutes")
