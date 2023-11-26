@@ -4,6 +4,8 @@ import numpy as np
 import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 from matplotlib import pyplot as plt
+import mpld3
+import streamlit.components.v1 as components
 
 
 #importation des données
@@ -248,7 +250,7 @@ st.divider()
 
 st.header("Analyse")
 st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performane.")
-st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Randomsaerch) fut obtenue")
+st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue")
 
 #création du graph
 plt.clf()
@@ -256,4 +258,8 @@ barplot_eli5=sns.barplot(df_eli5.iloc[:,:10])
 plt.xticks(rotation=30,ha='right')
 plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
-st.pyplot(barplot_eli5.get_figure())
+#st.pyplot(barplot_eli5.get_figure())
+fig_html = mpld3.fig_to_html(barplot_eli5)
+components.html(fig_html, height=600)
+
+st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées")
