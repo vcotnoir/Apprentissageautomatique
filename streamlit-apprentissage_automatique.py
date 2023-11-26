@@ -116,7 +116,7 @@ with st.container():
     with mlp: #MLP de base
         plt.clf()
         cm=confusion_matrix(Y_test,df_MLP_base)
-        confusion= sns.heatmap(cm2, annot=True, fmt='g')
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
@@ -126,7 +126,7 @@ with st.container():
     with grid: #gridsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_xgboost)
-        confusion= sns.heatmap(cm3, annot=True, fmt='g')
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
@@ -146,7 +146,7 @@ with st.container():
     with random: #randomsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_MLP_random)
-        confusion= sns.heatmap(cm2, annot=True, fmt='g')
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
@@ -199,7 +199,7 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
     with xg:#gridsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_xgboost)
-        confusion= sns.heatmap(cm2, annot=True, fmt='g')
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
@@ -215,7 +215,7 @@ test_pred = ufcboost.predict(X_test_df)''')
     with regression:
         plt.clf()
         cm=confusion_matrix(Y_test,df_logistique)
-        confusion= sns.heatmap(cm2, annot=True, fmt='g')
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
