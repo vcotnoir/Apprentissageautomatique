@@ -138,24 +138,24 @@ with st.container():
 
         with col1:
             code_getthatint='''random.seed(12)
-            def getthatint(lower=1,upper=1000,count=30):
-            random.seed(12)
-            getthatlist=[]
-            for i in range(count):
-            x = random.randint(lower,upper)
-            getthatlist.append(x)
-            return getthatlist'''
+def getthatint(lower=1,upper=1000,count=30):
+random.seed(12)
+getthatlist=[]
+for i in range(count):
+x = random.randint(lower,upper)
+getthatlist.append(x)
+return getthatlist'''
             st.code(code_getthatint,language='python')
         
         with col2:
             code_getthatfloat='''random.seed(12)
-            def getthatfloat(lower=0.0001,upper=1,count=30):
-            random.seed(12)
-            getthatlist=[]
-            for i in range(count):
-            x = round(random.uniform(lower,upper),4)
-            getthatlist.append(x)
-            return getthatlist'''
+def getthatfloat(lower=0.0001,upper=1,count=30):
+random.seed(12)
+getthatlist=[]
+for i in range(count):
+x = round(random.uniform(lower,upper),4)
+getthatlist.append(x)
+return getthatlist'''
             st.code(code_getthatfloat,language='python')
     with tab7:
         st.subheader("Données brutes")
