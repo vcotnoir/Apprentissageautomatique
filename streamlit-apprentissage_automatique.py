@@ -22,6 +22,19 @@ Y_test = pd.read_csv(url_Y_test)
 url_df_correlation = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/df_correlation.csv'
 df_correlation = pd.read_csv(url_df_correlation)
 
+url_predictions_random = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/clf_rand_pred.csv'
+df_MLP_random = pd.read_csv(url_predictions_random)
+
+url_preductions_XG = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufcboost_pred.csv'
+df_xgboost = pd.read_csv(url_preductions_XG)
+
+url_prediction_MLP = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc_base_pred.csv'
+df_MLP_base = pd.read_csv(url_prediction_MLP)
+
+url_logistique = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/logis_predict.csv'
+df_logistique = pd.read_csv(url_logistique)
+
+
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
 shape_df_lignes=shape_df[0]
@@ -123,13 +136,13 @@ with st.container():
         st.code(code_grid,language='python')
     with tab6: #randomsearch
         plt.clf()
-        cm2=confusion_matrix(Y_test,Y_test_naive)
+        cm2=confusion_matrix(Y_test,df_MLP_random)
         confusion2= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
         confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
         confusion2.set_title('Confusion Matrix (naive)'); 
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        st.pyplot(confusion2.get_figure())
 
         st.write("Une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
         col1, col2= st.columns(2)
