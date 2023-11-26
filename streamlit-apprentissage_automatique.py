@@ -129,7 +129,7 @@ with st.container():
         confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
         confusion2.set_title('Confusion Matrix (naive)'); 
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        st.pyplot(confusion2.get_figure())
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -202,7 +202,7 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
         confusion2.set_title('Confusion Matrix (naive)'); 
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        st.pyplot(confusion2.get_figure())
 
         st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from xgboost import XGBClassifier
@@ -218,4 +218,4 @@ test_pred = ufcboost.predict(X_test_df)''')
         confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
         confusion2.set_title('Confusion Matrix (naive)'); 
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        st.pyplot(confusion2.get_figure())
