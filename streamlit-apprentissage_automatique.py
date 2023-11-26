@@ -23,16 +23,16 @@ url_df_correlation = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageau
 df_correlation = pd.read_csv(url_df_correlation)
 
 url_predictions_random = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/clf_rand_pred.csv'
-df_MLP_random = pd.read_csv(url_predictions_random)
+df_MLP_random = pd.read_csv(url_predictions_random,header=1)
 
 url_preductions_XG = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufcboost_pred.csv'
-df_xgboost = pd.read_csv(url_preductions_XG)
+df_xgboost = pd.read_csv(url_preductions_XG,header=1)
 
 url_prediction_MLP = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc_base_pred.csv'
-df_MLP_base = pd.read_csv(url_prediction_MLP)
+df_MLP_base = pd.read_csv(url_prediction_MLP,header=1)
 
 url_logistique = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/logis_predict.csv'
-df_logistique = pd.read_csv(url_logistique)
+df_logistique = pd.read_csv(url_logistique,header=1)
 
 
 shape_df=df.shape
@@ -116,17 +116,17 @@ with st.container():
     with mlp: #MLP de base
         plt.clf()
         cm2=confusion_matrix(Y_test,df_MLP_base)
-        confusion= sns.heatmap(cm2, annot=True, fmt='g')
+        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
-        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-        confusion.set_title('Confusion Matrix (naive)'); 
-        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
+        confusion2.set_title('Confusion Matrix (naive)'); 
+        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion2.get_figure())
 
     with grid: #gridsearch
         plt.clf()
-        cm2=confusion_matrix(Y_test,df_xgboost)
-        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        cm3=confusion_matrix(Y_test,df_xgboost)
+        confusion3= sns.heatmap(cm3, annot=True, fmt='g')
         # labels, title and ticks
         confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
         confusion2.set_title('Confusion Matrix (naive)'); 
