@@ -1,7 +1,6 @@
 import streamlit as st 
 import pandas as pd
 import numpy as np
-from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 import seaborn as sns
 
 #importation des données
@@ -72,8 +71,8 @@ st.markdown(Process_explnation_mrkdwn)
 
 st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
-cm=confusion_matrix(Y_test,Y_test_naive)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+#cm=confusion_matrix(Y_test,Y_test_naive)
+#disp = ConfusionMatrixDisplay(confusion_matrix=cm)
 #disp.plot()
 #plt.show()
 
@@ -81,7 +80,7 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        st.pyplot(disp)
+        st.subheader("Données traitées")
     with tab4:
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
