@@ -30,6 +30,17 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
+correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
+correlation.set_title('Corrélation entre les variables')
+
+plt.clf()
+cm=confusion_matrix(Y_test,Y_test_naive)
+confusion= sns.heatmap(cm, annot=True, fmt='g')
+# labels, title and ticks
+confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
+confusion.set_title('Confusion Matrix (naive)'); 
+confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
+
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC '''
@@ -64,8 +75,6 @@ st.header('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
 with st.container():
-    correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
-    correlation.set_title('Corrélation entre les variables')
     st.pyplot(correlation.get_figure())
 
 st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
@@ -94,14 +103,9 @@ with st.container():
     with tab3:
         explication_naive = '''Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre'''
         st.markdown(explication_naive)
-        plt.clf()
-        cm=confusion_matrix(Y_test,Y_test_naive)
-        confusion= sns.heatmap(cm, annot=True, fmt='g')
-        # labels, title and ticks
-        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-        confusion.set_title('Confusion Matrix (naive)'); 
-        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())
+        
+        with st.container():
+            st.pyplot(confusion.get_figure())
     with tab4: #MLP de base
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
