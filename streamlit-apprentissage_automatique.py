@@ -73,19 +73,16 @@ st.markdown(Process_explnation_mrkdwn)
 
 st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
-cm=confusion_matrix(df_Y_test,df_naif)
-ax= plt.subplot()
-sns.heatmap(cm, annot=True, fmt='g', ax=ax)  #annot=True to annotate cells, ftm='g' to disable scientific notation
-
-ax.set_xlabel('Predicted winner');ax.set_ylabel('True winner'); 
-ax.set_title('Confusion Matrix (naive)'); 
-ax.xaxis.set_ticklabels(['Blue', 'Red']); ax.yaxis.set_ticklabels(['Blue', 'Red'])
+cm=confusion_matrix(Y_test,Y_test_naive)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+#disp.plot()
+#plt.show()
 
 with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        st.pyplot(ax)
+        st.pyplot(disp)
     with tab4:
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
