@@ -112,6 +112,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
+        st.markdown("Le taux de bonne classification est de **57,3%**")
 
     with mlp: #MLP de base
         plt.clf()
