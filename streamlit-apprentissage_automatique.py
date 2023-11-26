@@ -157,6 +157,20 @@ x = round(random.uniform(lower,upper),4)
 getthatlist.append(x)
 return getthatlist'''
             st.code(code_getthatfloat,language='python')
+        st.write("Des données furent générées et utilisés pour entrainer le MLP en choisissant 50 itérations différentes")
+        code_randsearch='''ufc = MLPClassifier(random_state=42)
+hidden_random=getthatint(10,300,50)
+alpha_random=getthatfloat(0.0001,1,50)
+learning_rate_init_random=getthatfloat(0.0001,1)
+#number of iterations kept to 10, default setting for n_iter
+param_random={'hidden_layer_sizes': hidden_random,
+       'solver':['sgd','lbfgs'],
+       'alpha':alpha_random,
+       'batch_size':[256,512],
+       'learning_rate_init':learning_rate_init_random,
+       'momentum':[0.1,0.3,0.6,0.9],
+       'max_iter':[1000,2000,3000,4000]}'''
+        st.code(code_randsearch)
     with tab7:
         st.subheader("Données brutes")
     with tab8:
