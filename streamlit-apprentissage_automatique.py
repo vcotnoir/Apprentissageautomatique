@@ -87,12 +87,12 @@ st.header('Entrainement des modèles et résultats')
 explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
 L'ordre de présentation représente l'ordre dans lesquels les modèles furent testés.'''
 st.markdown(explication)
-st.write('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
 with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
+        st.write("Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre")
         plt.clf()
         cm=confusion_matrix(Y_test,Y_test_naive)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
