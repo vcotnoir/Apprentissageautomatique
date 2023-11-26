@@ -120,6 +120,8 @@ with st.container():
        'learning_rate_init':[0.001,0.01,0.1,0.2],
        'momentum':[0.1,0.3,0.6,0.9],
        'max_iter':[4000]}'''
+        
+        st.write("Voici les paramétres utilisés pour faire l'entrainement")
         st.code(code_grid,language='python')
     with tab6:
         st.subheader("Données brutes")
