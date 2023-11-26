@@ -97,6 +97,12 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
+        cm=confusion_matrix(Y_test,Y_test_naive)
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
+        confusion.set_title('Confusion Matrix (naive)'); 
+        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
         st.pyplot(confusion.get_figure())
     with tab4:
         st.subheader("Données traitées")
