@@ -51,6 +51,7 @@ intro_text='''But: Faire les meilleures prédictions possibles sur les combats U
 
 st.header(intro_text)
 
+st.write("Les données brutes et les données traitées, utilisées pour faire l'entrainement des modèles, sont présentées ci-bas:")
 with st.container():
     tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
@@ -128,7 +129,7 @@ with st.container():
         st.write('''Toutes les variables de base du MLP de SKlearn ont étés utilisé à l'exception de nombre d'iterations et du "solver" puisque nous avons eu des problèmes de convergence.''') 
         st.write('Voici le code utlisé pour entainer le modèle')
         st.code("ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)")
-        st.markdown("Le taux de bonne classification est de **54.1%**")
+        st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
 
     with grid: #gridsearch
         plt.clf()
@@ -139,7 +140,7 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
-        st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
+        st.markdown("Le taux de bonne classification est de :red[**non-obtenu, trop long à rouler**]")
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -240,11 +241,13 @@ pca=PCA(n_components=2)
 x_train_pca=pca.fit_transform(X_train,Y_train)
 x_test_pca=pca.transform(X_test)''')
 
+st.divider()
 
 st.header("Analyse")
 st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performane.")
 st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Randomsaerch) fut obtenue")
 
+#création du graph
 plt.clf()
 barplot_eli5=sns.barplot(df_eli5.iloc[:,:10])
 plt.xticks(rotation=30,ha='right')
