@@ -10,6 +10,12 @@ df = pd.read_csv(url)
 url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/UFC_dataprocessed.csv'
 df_preprocessed = pd.read_csv(url_preprocessed)
 
+url_Naif = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test_naive.csv'
+df_naif = pd.read_csv(url_preprocessed)
+
+url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Apprentissage%20automatique_Y_test.csv'
+df_Y_test = pd.read_csv(url_preprocessed)
+
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
 shape_df_lignes=shape_df[0]
@@ -47,6 +53,8 @@ Explanation_text_traitement_donnes='''Les principales modifications sont les sui
 
 st.markdown(Explanation_text_traitement_donnes)
 
+st.header('Analyse exploratoire')
+
 st.header('Entrainement des modèles')
 
 Process_explnation_mrkdwn='''Voulant obtenir les meilleures performances, nous avons utilisé fait les étapes suivantes:  
@@ -67,6 +75,8 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
+        
+        
         st.subheader("Données brutes")
         st.dataframe(df)
         st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
