@@ -4,9 +4,6 @@ import numpy as np
 import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 from matplotlib import pyplot as plt
-import mpld3
-import streamlit.components.v1 as components
-
 
 #importation des données
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
@@ -258,8 +255,6 @@ barplot_eli5=sns.barplot(df_eli5.iloc[:,:10])
 plt.xticks(rotation=30,ha='right')
 plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
-#st.pyplot(barplot_eli5.get_figure())
-fig_html = mpld3.fig_to_html(barplot_eli5)
-components.html(fig_html, height=600)
+st.pyplot(barplot_eli5.get_figure())
 
 st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées")
