@@ -31,6 +31,9 @@ df_xgboost = pd.read_csv(url_preductions_XG)
 url_prediction_MLP = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc_base_pred.csv'
 df_MLP_base = pd.read_csv(url_prediction_MLP)
 
+url_logistique = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/logis_predict.csv'
+df_logistique = pd.read_csv(url_logistique)
+
 url_eli5 = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/eli5_results.csv'
 df_eli5 = pd.read_csv(url_eli5)
 
