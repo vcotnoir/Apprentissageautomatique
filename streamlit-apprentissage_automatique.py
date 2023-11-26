@@ -13,10 +13,10 @@ url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageauto
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 url_Naif = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test_naive.csv'
-df_naif = pd.read_csv(url_Naif)
+Y_test_naive = pd.read_csv(url_Naif)
 
 url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test.csv'
-df_Y_test = pd.read_csv(url_Y_test)
+Y_test = pd.read_csv(url_Y_test)
 
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
