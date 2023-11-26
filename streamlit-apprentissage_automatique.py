@@ -23,16 +23,16 @@ url_df_correlation = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageau
 df_correlation = pd.read_csv(url_df_correlation)
 
 url_predictions_random = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/clf_rand_pred.csv'
-df_MLP_random = pd.read_csv(url_predictions_random,header=1)
+df_MLP_random = pd.read_csv(url_predictions_random)
 
 url_preductions_XG = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufcboost_pred.csv'
-df_xgboost = pd.read_csv(url_preductions_XG,header=1)
+df_xgboost = pd.read_csv(url_preductions_XG)
 
 url_prediction_MLP = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc_base_pred.csv'
-df_MLP_base = pd.read_csv(url_prediction_MLP,header=1)
+df_MLP_base = pd.read_csv(url_prediction_MLP)
 
 url_logistique = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/logis_predict.csv'
-df_logistique = pd.read_csv(url_logistique,header=1)
+df_logistique = pd.read_csv(url_logistique)
 
 
 shape_df=df.shape
@@ -128,10 +128,10 @@ with st.container():
         cm3=confusion_matrix(Y_test,df_xgboost)
         confusion3= sns.heatmap(cm3, annot=True, fmt='g')
         # labels, title and ticks
-        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
-        confusion2.set_title('Confusion Matrix (naive)'); 
-        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion2.get_figure())
+        confusion3.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
+        confusion3.set_title('Confusion Matrix (naive)'); 
+        confusion3.xaxis.set_ticklabels(['Blue', 'Red']); confusion3.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion3.get_figure())
         # code utilisé
         code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
