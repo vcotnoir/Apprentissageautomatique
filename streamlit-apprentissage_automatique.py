@@ -100,9 +100,14 @@ with st.container():
         confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
         st.pyplot(confusion.get_figure())    
     with tab4: #MLP de base
-        st.subheader("Données traitées")
-        st.dataframe(df_preprocessed)
-        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+        plt.clf()
+        cm=confusion_matrix(Y_test,Y_test_naive)
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
+        confusion.set_title('Confusion Matrix (naive)'); 
+        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion.get_figure())
     with tab5: #gridsearch
         plt.clf()
         cm2=confusion_matrix(Y_test,Y_test_naive)
