@@ -1,9 +1,9 @@
-import seaborn as sns
-import matplotlib.pyplot as plt  
 import streamlit as st
+import matplotlib.pyplot as plt  
 import pandas as pd
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
+import seaborn as sns
 
 #importation des données
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
