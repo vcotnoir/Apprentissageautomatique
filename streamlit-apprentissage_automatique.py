@@ -13,10 +13,10 @@ url_preprocessed = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageauto
 df_preprocessed = pd.read_csv(url_preprocessed)
 
 url_Naif = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test_naive.csv'
-df_naif = pd.read_csv(url_preprocessed)
+df_naif = pd.read_csv(url_Naif)
 
 url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test.csv'
-df_Y_test = pd.read_csv(url_preprocessed)
+df_Y_test = pd.read_csv(url_Y_test)
 
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
@@ -73,7 +73,7 @@ st.markdown(Process_explnation_mrkdwn)
 
 st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
-cm=confusion_matrix(Y_test,Y_test_naive)
+cm=confusion_matrix(df_Y_test,df_naif)
 ax= plt.subplot()
 sns.heatmap(cm, annot=True, fmt='g', ax=ax)  #annot=True to annotate cells, ftm='g' to disable scientific notation
 
