@@ -87,7 +87,7 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        st.pyplot(ax)
+        st.pyplot(ax.get_figure())
     with tab4:
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
