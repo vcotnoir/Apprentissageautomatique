@@ -63,9 +63,10 @@ st.markdown(Explanation_text_traitement_donnes)
 st.header('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
-correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
-correlation.set_title('Corrélation entre les variables')
+
 with st.container():
+    correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
+    correlation.set_title('Corrélation entre les variables')
     st.pyplot(correlation.get_figure())
 
 st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
@@ -92,18 +93,16 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        explication_naive = '''Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre'''
-        st.markdown(explication_naive)
-        
-        with st.container():
-            plt.clf()
-            cm=confusion_matrix(Y_test,Y_test_naive)
-            confusion= sns.heatmap(cm, annot=True, fmt='g')
-            # labels, title and ticks
-            confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-            confusion.set_title('Confusion Matrix (naive)'); 
-            confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-            st.pyplot(confusion.get_figure())
+        # explication_naive = '''Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre'''
+        # st.markdown(explication_naive)
+        plt.clf()
+        cm=confusion_matrix(Y_test,Y_test_naive)
+        confusion= sns.heatmap(cm, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
+        confusion.set_title('Confusion Matrix (naive)'); 
+        confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion.get_figure())    
     with tab4: #MLP de base
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
