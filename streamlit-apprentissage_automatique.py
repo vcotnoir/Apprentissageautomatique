@@ -30,6 +30,12 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
+
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC '''
