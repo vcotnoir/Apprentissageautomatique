@@ -111,16 +111,18 @@ with st.container():
         confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
         confusion.set_title('Confusion Matrix (naive)'); 
         confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())    
+        st.pyplot(confusion.get_figure()) 
+
     with mlp: #MLP de base
         plt.clf()
-        cm=confusion_matrix(Y_test,df_MLP_base)
-        confusion= sns.heatmap(cm, annot=True, fmt='g')
+        cm2=confusion_matrix(Y_test,df_MLP_base)
+        confusion= sns.heatmap(cm2, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
         confusion.set_title('Confusion Matrix (naive)'); 
         confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-        st.pyplot(confusion.get_figure())    
+        st.pyplot(confusion.get_figure())
+
     with grid: #gridsearch
         plt.clf()
         cm2=confusion_matrix(Y_test,df_xgboost)
