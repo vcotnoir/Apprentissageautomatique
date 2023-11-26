@@ -239,7 +239,10 @@ test_pred = ufcboost.predict(X_test_df)''')
 from sklearn.linear_model import LogisticRegression
 pca=PCA(n_components=2)
 x_train_pca=pca.fit_transform(X_train,Y_train)
-x_test_pca=pca.transform(X_test)''')
+x_test_pca=pca.transform(X_test)
+
+#entrainement du modèle
+logis_data=LogisticRegression(random_state=42).fit(x_train_pca, Y_train)''')
 
 st.divider()
 
