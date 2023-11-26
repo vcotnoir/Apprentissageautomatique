@@ -30,12 +30,6 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
-with st.sidebar:
-    add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
-    )
-
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC '''
@@ -77,20 +71,22 @@ with st.container():
 st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
 st.write("Les colonnes à garder et les transformations de données ont étés décidés suite à l'analyse exploratoire")
 
-st.header('Entrainement des modèles')
+st.header('Entrainement des modèles et résultats')
 
-Process_explnation_mrkdwn='''Voulant obtenir les meilleures performances, nous avons utilisé fait les étapes suivantes:  
-1. Une cible fut établie, en utilisant la régle naive et en prédisant que tous les combats seraient gagnés par les combatants dans le coins rouge
-2. Un MLP fut entrainé avec les réglages de base  
-3. Un MLP fut entrainé en utilisant la recherche en grille  
-4. Un MLP fut entrainé en utilisant la recherche aléatoire  
-5. Un arbre de décision utilisant le boosting (XGBoost) fut entrainé  
-6. Une regression linéaire utilisant l'analyse en compsantes principale fut entrainé  
+#Process_explnation_mrkdwn='''Voulant obtenir les meilleures performances, nous avons utilisé fait les étapes suivantes:  
+#1. Une cible fut établie, en utilisant la régle naive et en prédisant que tous les combats seraient gagnés par les combatants dans le coins rouge
+#2. Un MLP fut entrainé avec les réglages de base  
+#3. Un MLP fut entrainé en utilisant la recherche en grille  
+#4. Un MLP fut entrainé en utilisant la recherche aléatoire  
+#5. Un arbre de décision utilisant le boosting (XGBoost) fut entrainé  
+#6. Une regression linéaire utilisant l'analyse en compsantes principale fut entrainé  
 
-Nous avons également fait des essaits en modifiant notre jeux de données, mais aucun différence notable de fut notée et donc les résultats ne seront pas présentés. '''
+# Nous avons également fait des essaits en modifiant notre jeux de données, mais aucun différence notable de fut notée et donc les résultats ne seront pas présentés. '''
 
-st.markdown(Process_explnation_mrkdwn)
-
+# st.markdown(Process_explnation_mrkdwn)
+explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
+L'ordre de présentation représente l'ordre dans lesquels les modèles furent testés.'''
+st.markdown(explication)
 st.write('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
 with st.container():
