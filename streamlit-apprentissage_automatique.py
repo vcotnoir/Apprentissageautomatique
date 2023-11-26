@@ -131,10 +131,11 @@ with st.container():
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
         st.pyplot(confusion.get_figure())
 
-        st.write("une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
+        st.write("Une fonction fut créée pour générer des chiffres entiers aléatoirement et une autre pour générer des chiffres à décimale")
         col1, col2= st.columns(2)
 
         with col1:
+            st.write("Fonction générant des chiffres entiers")
             code_getthatint='''random.seed(12)
 def getthatint(lower=1,upper=1000,count=30):
 random.seed(12)
@@ -146,6 +147,7 @@ return getthatlist'''
             st.code(code_getthatint,language='python')
         
         with col2:
+            st.write("Fonction générant des chiffres décimaux")
             code_getthatfloat='''random.seed(12)
 def getthatfloat(lower=0.0001,upper=1,count=30):
 random.seed(12)
@@ -182,7 +184,7 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
         st.pyplot(confusion.get_figure())
 
-        st.write('le code suivant fut ensuite utilisé pour créer le modèle')
+        st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from xgboost import XGBClassifier
 ufcboost = XGBClassifier(random_state=42)
 ufcboost.fit(X_train, Y_train)
