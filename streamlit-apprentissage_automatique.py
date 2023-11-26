@@ -47,6 +47,7 @@ with st.container():
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
         st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+        st.write("elles furent traitées suite à l'analyse exploratoire")
 
 st.divider()
 Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
@@ -65,6 +66,9 @@ st.text('La corrélation entre les variables a été obtneu pour comprendre les 
 correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
 correlation.set_title('Corrélation entre les variables');
 st.pyplot(correlation.get_figure())
+
+st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
+st.write("Les colonnes à garder et les transformations de données ont étés décidés suite à l'analyse exploratoire")
 
 st.header('Entrainement des modèles')
 
