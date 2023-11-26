@@ -85,7 +85,7 @@ Nous avons également fait des essaits en modifiant notre jeux de données, mais
 
 st.markdown(Process_explnation_mrkdwn)
 
-st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
+st.write('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
 with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
@@ -104,7 +104,23 @@ with st.container():
         st.dataframe(df_preprocessed)
         st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
     with tab5:
-        st.subheader("Données brutes")
+        plt.clf()
+        cm2=confusion_matrix(Y_test,Y_test_naive)
+        confusion2= sns.heatmap(cm2, annot=True, fmt='g')
+        # labels, title and ticks
+        confusion2.set_xlabel('Predicted winner');confusion2.set_ylabel('True winner'); 
+        confusion2.set_title('Confusion Matrix (naive)'); 
+        confusion2.xaxis.set_ticklabels(['Blue', 'Red']); confusion2.yaxis.set_ticklabels(['Blue', 'Red'])
+        st.pyplot(confusion.get_figure())
+        # code utilisé
+        code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
+       'solver':['sgd','lbfgs'],
+       'alpha':[0.0001,0.001,0.01,0.1,1],
+       'batch_size':[256,512],
+       'learning_rate_init':[0.001,0.01,0.1,0.2],
+       'momentum':[0.1,0.3,0.6,0.9],
+       'max_iter':[4000]}'''
+        st.code(code_grid,language='python')
     with tab6:
         st.subheader("Données brutes")
     with tab7:
