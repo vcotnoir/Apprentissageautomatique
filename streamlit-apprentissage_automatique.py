@@ -30,17 +30,6 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
-correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
-correlation.set_title('Corrélation entre les variables')
-
-plt.clf()
-cm=confusion_matrix(Y_test,Y_test_naive)
-confusion= sns.heatmap(cm, annot=True, fmt='g')
-# labels, title and ticks
-confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-confusion.set_title('Confusion Matrix (naive)'); 
-confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC '''
@@ -74,6 +63,8 @@ st.markdown(Explanation_text_traitement_donnes)
 st.header('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
+correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
+correlation.set_title('Corrélation entre les variables')
 with st.container():
     st.pyplot(correlation.get_figure())
 
@@ -105,6 +96,13 @@ with st.container():
         st.markdown(explication_naive)
         
         with st.container():
+            plt.clf()
+            cm=confusion_matrix(Y_test,Y_test_naive)
+            confusion= sns.heatmap(cm, annot=True, fmt='g')
+            # labels, title and ticks
+            confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
+            confusion.set_title('Confusion Matrix (naive)'); 
+            confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
             st.pyplot(confusion.get_figure())
     with tab4: #MLP de base
         st.subheader("Données traitées")
