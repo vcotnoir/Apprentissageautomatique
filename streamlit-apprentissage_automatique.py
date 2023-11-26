@@ -92,7 +92,9 @@ with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with tab3:
-        st.write("Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre")
+        explication_naive = '''Pour la règle naive, tous les combats ont été prévus comme se le combattant :red[rouge] le gagnait. cela nous as permis d'établir une marque de base à essayer de battre'''
+        st.markdown(explication_naive)
+        
         plt.clf()
         cm=confusion_matrix(Y_test,Y_test_naive)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
