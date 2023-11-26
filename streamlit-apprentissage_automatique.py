@@ -86,13 +86,6 @@ st.markdown(Process_explnation_mrkdwn)
 
 st.text('le code utilisé pour monter les modèles et les résultats sont présentés ci-bas:')
 
-cm=confusion_matrix(Y_test,Y_test_naive)
-confusion= sns.heatmap(cm, annot=True, fmt='g')
-# labels, title and ticks
-confusion.set_xlabel('Predicted winner');confusion.set_ylabel('True winner'); 
-confusion.set_title('Confusion Matrix (naive)'); 
-confusion.xaxis.set_ticklabels(['Blue', 'Red']); confusion.yaxis.set_ticklabels(['Blue', 'Red'])
-
 with st.container():
     tab3,tab4,tab5,tab6,tab7,tab8 = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
