@@ -19,7 +19,7 @@ Y_test_naive = pd.read_csv(url_Naif)
 url_Y_test = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/Y_test.csv'
 Y_test = pd.read_csv(url_Y_test)
 
-url_df_correlation = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/df_encoded_corr.csv'
+url_df_correlation = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/df_correlation.csv'
 df_correlation = pd.read_csv(url_df_correlation)
 
 shape_df=df.shape
@@ -61,19 +61,8 @@ st.markdown(Explanation_text_traitement_donnes)
 
 st.header('Analyse exploratoire')
 
-#on retire des colonnes pour aider à mieux voir la correlation
-X_test2_df = df_correlation(['weight_class_Bantamweight', 'weight_class_Catch Weight','weight_class_Featherweight', 'weight_class_Flyweight',
-       'weight_class_Heavyweight', 'weight_class_Light Heavyweight',
-       'weight_class_Lightweight', 'weight_class_Middleweight',
-       'weight_class_Welterweight', "weight_class_Women's Bantamweight",
-       "weight_class_Women's Featherweight", "weight_class_Women's Flyweight",
-       "weight_class_Women's Strawweight",'B_Stance_Open Stance', 'B_Stance_Orthodox', 'B_Stance_Southpaw',
-       'B_Stance_Switch', 'R_Stance_Open Stance', 'R_Stance_Orthodox',
-       'R_Stance_Southpaw', 'R_Stance_Switch','title_bout_True','gender_MALE','B_match_weightclass_rank', 'R_match_weightclass_rank','R_age', 'B_age',
-       'better_rank_Blue','better_rank_Red', 'better_rank_neither',],axis=1)
 
-correlation=sns.heatmap(X_test2_df.corr(),cmap='coolwarm')
-
+correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
 st.pyplot(correlation.get_figure())
 
 st.header('Entrainement des modèles')
