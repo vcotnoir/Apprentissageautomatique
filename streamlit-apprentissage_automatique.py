@@ -57,8 +57,8 @@ st.header(intro_text)
 
 st.header("Présentation des données")
 
-st.write('''Des données issues des combats en UFC (Utimate Fighting Championship) ayant eu lieux entre 2010 et 2023 sont étés récoltées en utilisant Kaggle (2010-2022) et le "web-scrapping" (2023) afin de composer un jeu de données ayant pour but de faire de la classification binaire''')
-st.write('''Pour fin de facilité, les données sont présentées, suivit des résultats. La méthodologie est présentée en dernier (analyse exploratoire et traitement des données).''')
+st.write('''Des données issues des combats en UFC (Utimate Fighting Championship) ayant eu lieu entre 2010 et 2023 sont étés récoltées en utilisant Kaggle (2010-2022) et le "web-scrapping" (2023) afin de composer un jeu de données ayant pour but de faire de la classification binaire''')
+st.write('''Pour fin de facilité, les données sont présentées, suivi des résultats. La méthodologie est présentée en dernier (analyse exploratoire et traitement des données).''')
 with st.container():
     tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
@@ -76,14 +76,14 @@ st.divider()
 st.header('Résultats')
 
 explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
-L'ordre de présentation représente l'ordre dans lesquels les modèles furent testés.'''
+L'ordre de présentation représente l'ordre dans lequel les modèles furent testés.'''
 st.markdown(explication)
 
 with st.container():
     naive,mlp,grid,random,xg,regression = st.tabs(['Règle Naive', 'MLP','Gridsearch','Randomsearch','XGBoost','Regression linéaire'])
 
     with naive:
-        st.write("Pour la régle naive, le combattant :red[rouge] a été prédit comme gagnant dans tous les combats")
+        st.write("Pour la règle naïve, le combattant :red[rouge] a été prédit comme gagnant dans tous les combats")
         plt.clf()
         cm=confusion_matrix(Y_test,Y_test_naive)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
@@ -245,8 +245,8 @@ logis_data=LogisticRegression(random_state=42).fit(x_train_pca, Y_train)''')
 st.divider()
 
 st.header("Analyse")
-st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performane.")
-st.write("L'importance des variables de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue")
+st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performance.")
+st.write("L'importance des variables de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue.")
 
 #création du graph
 plt.clf()
@@ -259,10 +259,10 @@ st.pyplot(barplot_eli5.get_figure())
 
 analyse_graphique_importance = '''L'analyse des 10 variables les plus significatives nous permet de remarquer que les données plus avancées ont une utilité qui est limitée.  
 Des 10 variables, seulement 2 variables poussées se hissent dans la liste (B_avg_SIG_STR_landed et B_avg_SIG_STR_landed). Ce sont des variables qui mesurent le nombre de couts significatifs qui sont lancés par les combattants.  
-5 des variables sont liés à l'age ou au mesures physiques des combattants (B_age, age_dif, R_height_cms, B_Reach_cms, R_Reach_cms).  
+5 des variables sont liées à l'âge ou aux mesures physiques des combattants (B_age, age_dif, R_height_cms, B_Reach_cms, R_Reach_cms).  
 Les variables restantes sont des variables liées au rang et au nombre de défaites.'''
 st.markdown(analyse_graphique_importance)
-st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées à obtenir de bonnes prédictions")
+st.write("finalement, la représentation graphique du PCA a été créée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultés à obtenir de bonnes prédictions")
 
 #création du PCA
 plt.clf()
@@ -283,15 +283,15 @@ plt.ylabel("deuxième composante principale")
 st.pyplot(plt)
 
 explication_PCA = '''Lorsque toutes les données sont projetées en 2 dimensions, la difficulté à obtenir des résultats devient claire.  
-Toutes les données sont agglutinées d'une manière qui rend difficle de faire une différenciaton entre les gagnants.  
-Il est donc tout aussi difficile pour les modèles que nous avons utilsé de faire ce même genre de différenciation, expliquant ainsi les résultats obtenus.'''
+Toutes les données sont agglutinées d'une manière qui rend difficile de faire une différenciation entre les gagnants.  
+Il est donc tout aussi difficile pour les modèles que nous avons utilisés de faire ce même genre de différenciation, expliquant ainsi les résultats obtenus.'''
 
 st.markdown(explication_PCA)
 
 st.divider()
 st.header('Méthodologie')
 st.subheader('Analyse exploratoire')
-st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
+st.write('La corrélation entre les variables a été obtenue pour comprendre les données et savoir si certaines variables devraient être priorisées')
 
 
 with st.container():
@@ -303,13 +303,13 @@ st.write("Le paquet de visualisation Sweetviz a également été utilisé pour f
 
 st.subheader('''Traitement des données''')
 Explanation_text_traitement_donnes='''  
-1. Une sélection manuelle des variables à été fait suite à l'analyse des résultas de Sweetviz.  
-2. Les données en liens avec les séries de victoires et de défaites furent combinés pour ne créer qu'une seule variable montrant la différence entre ces séries.  
-3. Les données affairant aux victoires par décision et aux victoires par KO furent regroupées. Par exemple, un combattant pouvait gagner une victoire par décision unanime pou partagée, ces données furent regroupées.  
-4. Une variable montrant la différence de rang entre les combattants fut crée.
+1. Une sélection manuelle des variables a été fait suite à l'analyse des résultats de Sweetviz.  
+2. Les données en lien avec les séries de victoires et de défaites furent combinées pour ne créer qu'une seule variable montrant la différence entre ces séries.  
+3. Les données affairant aux victoires par décision et aux victoires par K.-O. furent regroupées. Par exemple, un combattant pouvait gagner une victoire par décision unanime pou partagé, ces données furent regroupées.  
+4. Une variable montrant la différence de rang entre les combattants fut créée.
 5. En raison de leur très petit nombre, les égalités furent retirées.  
-6. Ajustement des anomalies ou des valeures manquantes.
-7. Les données furent standardisées et centrées avec un moyenne de 0 et un écart type de 1.
+6. Ajustement des anomalies ou des valeurs manquantes.
+7. Les données furent standardisées et centrées avec une moyenne de 0 et un écart type de 1.
 '''
 st.markdown(Explanation_text_traitement_donnes)
 
