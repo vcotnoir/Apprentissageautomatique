@@ -49,6 +49,9 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
+st.set_page_config(layout = "wide")
+
+
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC (problème de classification binaire)'''
@@ -58,7 +61,7 @@ st.header(intro_text)
 st.header("Présentation des données")
 
 st.write('''Des données issues des combats en UFC (Utimate Fighting Championship) ayant eu lieux entre 2010 et 2023 sont étés récoltées en utilisant Kaggle (2010-2022) et le "web-scrapping" (2023) afin de composer un jeu de données ayant pour but de faire de la classification binaire''')
-
+st.write('''Elles furent analysées et traitées (voir section méthodologie), pour faire des prédiction qui sont présentées dans la section résultats.''')
 with st.container():
     tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
@@ -289,7 +292,8 @@ Il est donc tout aussi difficile pour les modèles que nous avons utilsé de fai
 st.markdown(explication_PCA)
 
 st.divider()
-st.header('Analyse exploratoire')
+st.header('Méthodologie')
+st.subheader('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
 
 
