@@ -267,7 +267,7 @@ st.divider()
 
 st.header("Analyse")
 st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performane.")
-st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue")
+st.write("L'importance des variables de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue")
 
 #création du graph
 plt.clf()
@@ -278,6 +278,11 @@ plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
 st.pyplot(barplot_eli5.get_figure())
 
+analyse_graphique_importance = '''L'analyse des 10 variables les plus significatives nous permet de remarquer que les données plus avancées ont une utilité qui est limitée.  
+Des 10 variables, seulement 2 variables poussées se hissent dans la liste (B_avg_SIG_STR_landed et B_avg_SIG_STR_landed). Ce sont des variables qui mesurent le nombre de couts significatifs qui sont lancés par les combattants.  
+5 des variables sont liés à l'age ou au mesures physiques des combattants (B_age, age_dif, R_height_cms, B_Reach_cms, R_Reach_cms).  
+Les variables restantes sont des variables liées au rang et au nombre de défaites.'''
+st.markdown(analyse_graphique_importance)
 st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées à obtenir de bonnes prédictions")
 
 #création du PCA
@@ -297,3 +302,4 @@ plt.title('PCA des données UFC')
 plt.xlabel("Première composante principale")
 plt.ylabel("deuxième composante principale")
 st.pyplot(plt)
+
