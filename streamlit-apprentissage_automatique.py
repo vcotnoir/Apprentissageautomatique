@@ -303,3 +303,8 @@ plt.xlabel("Première composante principale")
 plt.ylabel("deuxième composante principale")
 st.pyplot(plt)
 
+explication_PCA = '''Lorsque toutes les données sont projetées en 2 dimensions, la difficulté à obtenir des résultats devient claire.  
+Toutes les données sont agglutinées d'une manière qui rend difficle de faire une différenciaton entre les gagnants.  
+Il est donc tout aussi difficile pour les modèles que nous avons utilsé de faire ce même genre de différenciation, expliquant ainsi les résultats obtenus.'''
+
+st.markdown(explication_PCA)
