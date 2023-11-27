@@ -51,9 +51,28 @@ shape_df_processed_lignes=shape_df_processed[0]
 
 st.title('Apprentissage automatique - prédictions UFC')
 
-intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC '''
+intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC (problème de classification binaire)'''
 
 st.header(intro_text)
+
+st.header("Présentation des données")
+
+st.write('''Des données issues des combats en UFC (Utimate Fighting Championship) ayant eu lieux entre 2010 et 2023 sont étés récoltées en utilisant Kaggle (2010-2022) et le "web-scrapping" (2023) afin de composer un jeu de données ayant pour but de faire de la classification binaire''')
+
+with st.container():
+    tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
+
+    with tab1:
+        st.subheader("Données brutes")
+        st.dataframe(df)
+        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
+    with tab2:
+        st.subheader("Données traitées")
+        st.dataframe(df_preprocessed)
+        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+        st.write("elles furent traitées suite à l'analyse exploratoire")
+
+st.divider()
 
 st.header('Résultats et entrainement des modèles')
 
@@ -294,20 +313,3 @@ st.markdown(Explanation_text_traitement_donnes)
 
 st.divider()
 
-st.header("Présentation des données")
-
-st.write("Les données brutes et les données traitées, utilisées pour faire l'entrainement des modèles, sont présentées ci-bas:")
-with st.container():
-    tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
-
-    with tab1:
-        st.subheader("Données brutes")
-        st.dataframe(df)
-        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
-    with tab2:
-        st.subheader("Données traitées")
-        st.dataframe(df_preprocessed)
-        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
-        st.write("elles furent traitées suite à l'analyse exploratoire")
-
-st.divider()
