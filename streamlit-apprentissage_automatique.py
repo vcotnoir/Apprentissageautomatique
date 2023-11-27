@@ -132,7 +132,10 @@ with st.container():
         st.pyplot(confusion.get_figure())
         st.write('''Toutes les variables de base du MLP de SKlearn ont étés utilisé à l'exception de nombre d'iterations et du "solver" puisque nous avons eu des problèmes de convergence.''') 
         st.write('Voici le code utlisé pour entainer le modèle')
-        st.code("ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)")
+        st.code('''from sklearn.neural_network import MLPClassifier
+
+#Entrainement du modèle
+ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)''')
         st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
 
     with grid: #gridsearch
@@ -146,7 +149,9 @@ with st.container():
         st.pyplot(confusion.get_figure()) 
         st.markdown("Le taux de bonne classification est de :red[**non-obtenu, trop long à rouler**]")
         # code utilisé
-        code_grid='''ufc = MLPClassifier(random_state=42)
+        code_grid='''from sklearn.model_selection import GridSearchCV
+
+ufc = MLPClassifier(random_state=42)
 random.seed(1234)
 param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
@@ -155,7 +160,11 @@ param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'learning_rate_init':[0.001,0.01,0.1,0.2],
        'momentum':[0.1,0.3,0.6,0.9],
        'max_iter':[4000]}
+
+#création du modèle
 clf_grid=GridSearchCV(ufc,param_grid)
+
+#Entrainement du modèle
 clf_grid.fit(X_train,Y_train)'''
         
         st.write("Voici les paramètres utilisés pour faire l'entrainement")
