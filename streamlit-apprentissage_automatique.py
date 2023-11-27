@@ -4,6 +4,7 @@ import numpy as np
 import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 from matplotlib import pyplot as plt
+from sklearn.decomposition import PCA
 
 #importation des données
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
@@ -35,6 +36,10 @@ df_logistique = pd.read_csv(url_logistique)
 
 url_eli5 = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/eli5_results.csv'
 df_eli5 = pd.read_csv(url_eli5)
+
+url_pca = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/df_pca.csv'
+df_pca = pd.read_csv(url_pca)
+
 
 shape_df=df.shape
 shape_df_colonnes=shape_df[1]
@@ -258,3 +263,20 @@ plt.ylabel('Poids')
 st.pyplot(barplot_eli5.get_figure())
 
 st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées")
+
+plt.clf()
+
+df_pca_array=np.array(df_pca)
+y=df_pca_array[:,2]
+x=df_pca_array[:,[0,1]]
+
+cdict={0:'Blue',1:'Red'}
+
+for label in np.unique(y):
+    plt.scatter(x[y==label, 0], x[y==label, 1], label=label, c=cdict[label])
+
+plt.legend(["Bleu","Rouge"], title="Gagnant")
+plt.title('PCA des données UFC')
+plt.xlabel("Première composante principale")
+plt.ylabel("deuxième composante principale")
+st.pyplot(plt)
