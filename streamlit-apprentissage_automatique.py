@@ -49,9 +49,6 @@ shape_df_processed=df_preprocessed.shape
 shape_df_processed_colonnes=shape_df_processed[1]
 shape_df_processed_lignes=shape_df_processed[0]
 
-st.set_page_config(layout = "wide")
-
-
 st.title('Apprentissage automatique - prédictions UFC')
 
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC (problème de classification binaire)'''
