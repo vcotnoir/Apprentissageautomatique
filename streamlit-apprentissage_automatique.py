@@ -223,7 +223,8 @@ param_random={'hidden_layer_sizes': hidden_random,
 # entrainement du modèle
 clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
         st.code(code_randsearch)
-    with xg:#gridsearch
+
+    with xg:#xgboost
         plt.clf()
         cm=confusion_matrix(Y_test,df_xgboost)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
@@ -236,9 +237,12 @@ clf_rand50=RandomizedSearchCV(ufc,param_random,n_iter=50,random_state=42)'''
 
         st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from xgboost import XGBClassifier
+
+#création du modèle
 ufcboost = XGBClassifier(random_state=42)
-ufcboost.fit(X_train, Y_train)
-test_pred = ufcboost.predict(X_test_df)''')
+                
+#entrainement du modèle
+ufcboost.fit(X_train, Y_train)''')
 
     with regression:
         plt.clf()
@@ -254,6 +258,8 @@ test_pred = ufcboost.predict(X_test_df)''')
         st.write('Le code suivant fut ensuite utilisé pour créer le modèle')
         st.code('''from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
+
+Création du PCA
 pca=PCA(n_components=2)
 x_train_pca=pca.fit_transform(X_train,Y_train)
 x_test_pca=pca.transform(X_test)
@@ -277,6 +283,7 @@ st.pyplot(barplot_eli5.get_figure())
 
 st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées à obtenir de bonnes prédictions")
 
+#création du PCA
 plt.clf()
 
 df_pca_array=np.array(df_pca)
