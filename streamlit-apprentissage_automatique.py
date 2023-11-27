@@ -70,12 +70,7 @@ with st.container():
         st.write("elles furent traitées suite à l'analyse exploratoire")
 
 st.divider()
-Explanation_text_traitement_donnes='''Les principales modifications sont les suivantes:  
-- Les données permettant d'dentifier une combattant directement (comme les noms) ont étés retirées  
-- Les données en liens avec les cotes pour faire des paris furent retirées
-- Les combats qui se sont terminés par des égalités furent retirés
-'''
-st.markdown(Explanation_text_traitement_donnes)
+
 
 st.header('Analyse exploratoire')
 st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
@@ -87,21 +82,21 @@ with st.container():
     st.pyplot(correlation.get_figure())
 
 st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
-st.write("Les colonnes à garder et les transformations de données ont étés décidés suite à l'analyse exploratoire")
 
-st.header('Entrainement des modèles et résultats')
+st.subheader('''Traitement des données''')
+Explanation_text_traitement_donnes='''  
+1. Une sélection manuelle des variables à été fait suite à l'analyse des résultas de Sweetviz.  
+2. Les données en liens avec les séries de victoires et de défaites furent combinés pour ne créer qu'une seule variable montrant la différence entre ces séries.  
+3. Les données affairant aux victoires par décision et aux victoires par KO furent regroupées. Par exemple, un combattant pouvait gagner une victoire par décision unanime pou partagée, ces données furent regroupées.  
+4. Une variable montrant la différence de rang entre les combattants fut crée.
+5. En raison de leur très petit nombre, les égalités furent retirées.  
+6. Ajustement des anomalies ou des valeures manquantes.
+'''
+st.markdown(Explanation_text_traitement_donnes)
 
-#Process_explnation_mrkdwn='''Voulant obtenir les meilleures performances, nous avons utilisé fait les étapes suivantes:  
-#1. Une cible fut établie, en utilisant la régle naive et en prédisant que tous les combats seraient gagnés par les combatants dans le coins rouge
-#2. Un MLP fut entrainé avec les réglages de base  
-#3. Un MLP fut entrainé en utilisant la recherche en grille  
-#4. Un MLP fut entrainé en utilisant la recherche aléatoire  
-#5. Un arbre de décision utilisant le boosting (XGBoost) fut entrainé  
-#6. Une regression linéaire utilisant l'analyse en compsantes principale fut entrainé  
+st.divider()
+st.header('Résultats et entrainement des modèles')
 
-# Nous avons également fait des essaits en modifiant notre jeux de données, mais aucun différence notable de fut notée et donc les résultats ne seront pas présentés. '''
-
-# st.markdown(Process_explnation_mrkdwn)
 explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
 L'ordre de présentation représente l'ordre dans lesquels les modèles furent testés.'''
 st.markdown(explication)
@@ -169,6 +164,7 @@ clf_grid.fit(X_train,Y_train)'''
         
         st.write("Voici les paramètres utilisés pour faire l'entrainement")
         st.code(code_grid,language='python')
+    
     with random: #randomsearch
         plt.clf()
         cm=confusion_matrix(Y_test,df_MLP_random)
