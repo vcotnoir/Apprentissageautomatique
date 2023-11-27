@@ -55,46 +55,6 @@ intro_text='''But: Faire les meilleures prédictions possibles sur les combats U
 
 st.header(intro_text)
 
-st.write("Les données brutes et les données traitées, utilisées pour faire l'entrainement des modèles, sont présentées ci-bas:")
-with st.container():
-    tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
-
-    with tab1:
-        st.subheader("Données brutes")
-        st.dataframe(df)
-        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
-    with tab2:
-        st.subheader("Données traitées")
-        st.dataframe(df_preprocessed)
-        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
-        st.write("elles furent traitées suite à l'analyse exploratoire")
-
-st.divider()
-
-
-st.header('Analyse exploratoire')
-st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
-
-
-with st.container():
-    correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
-    correlation.set_title('Corrélation entre les variables')
-    st.pyplot(correlation.get_figure())
-
-st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
-
-st.subheader('''Traitement des données''')
-Explanation_text_traitement_donnes='''  
-1. Une sélection manuelle des variables à été fait suite à l'analyse des résultas de Sweetviz.  
-2. Les données en liens avec les séries de victoires et de défaites furent combinés pour ne créer qu'une seule variable montrant la différence entre ces séries.  
-3. Les données affairant aux victoires par décision et aux victoires par KO furent regroupées. Par exemple, un combattant pouvait gagner une victoire par décision unanime pou partagée, ces données furent regroupées.  
-4. Une variable montrant la différence de rang entre les combattants fut crée.
-5. En raison de leur très petit nombre, les égalités furent retirées.  
-6. Ajustement des anomalies ou des valeures manquantes.
-'''
-st.markdown(Explanation_text_traitement_donnes)
-
-st.divider()
 st.header('Résultats et entrainement des modèles')
 
 explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
@@ -308,3 +268,46 @@ Toutes les données sont agglutinées d'une manière qui rend difficle de faire 
 Il est donc tout aussi difficile pour les modèles que nous avons utilsé de faire ce même genre de différenciation, expliquant ainsi les résultats obtenus.'''
 
 st.markdown(explication_PCA)
+
+st.divider()
+st.header('Analyse exploratoire')
+st.write('La corrélation entre les variables a été obtneu pour comprendre les données et savoir si certaines variables devraient êtres priorisées')
+
+
+with st.container():
+    correlation=sns.heatmap(df_correlation.corr(),cmap='coolwarm')
+    correlation.set_title('Corrélation entre les variables')
+    st.pyplot(correlation.get_figure())
+
+st.write("Le paquet de visualisation Sweetviz a également été utilisé pour faire une analyse exploratoire des données")
+
+st.subheader('''Traitement des données''')
+Explanation_text_traitement_donnes='''  
+1. Une sélection manuelle des variables à été fait suite à l'analyse des résultas de Sweetviz.  
+2. Les données en liens avec les séries de victoires et de défaites furent combinés pour ne créer qu'une seule variable montrant la différence entre ces séries.  
+3. Les données affairant aux victoires par décision et aux victoires par KO furent regroupées. Par exemple, un combattant pouvait gagner une victoire par décision unanime pou partagée, ces données furent regroupées.  
+4. Une variable montrant la différence de rang entre les combattants fut crée.
+5. En raison de leur très petit nombre, les égalités furent retirées.  
+6. Ajustement des anomalies ou des valeures manquantes.
+'''
+st.markdown(Explanation_text_traitement_donnes)
+
+st.divider()
+
+st.header("Présentation des données")
+
+st.write("Les données brutes et les données traitées, utilisées pour faire l'entrainement des modèles, sont présentées ci-bas:")
+with st.container():
+    tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
+
+    with tab1:
+        st.subheader("Données brutes")
+        st.dataframe(df)
+        st.write("Les données brutes ont ",shape_df_lignes," lignes et ",shape_df_colonnes," colonnes.")
+    with tab2:
+        st.subheader("Données traitées")
+        st.dataframe(df_preprocessed)
+        st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
+        st.write("elles furent traitées suite à l'analyse exploratoire")
+
+st.divider()
