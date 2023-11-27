@@ -146,13 +146,17 @@ with st.container():
         st.pyplot(confusion.get_figure()) 
         st.markdown("Le taux de bonne classification est de :red[**non-obtenu, trop long à rouler**]")
         # code utilisé
-        code_grid='''param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
+        code_grid='''ufc = MLPClassifier(random_state=42)
+random.seed(1234)
+param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
        'solver':['sgd','lbfgs'],
        'alpha':[0.0001,0.001,0.01,0.1,1],
        'batch_size':[256,512],
        'learning_rate_init':[0.001,0.01,0.1,0.2],
        'momentum':[0.1,0.3,0.6,0.9],
-       'max_iter':[4000]}'''
+       'max_iter':[4000]}
+clf_grid=GridSearchCV(ufc,param_grid)
+clf_grid.fit(X_train,Y_train)'''
         
         st.write("Voici les paramètres utilisés pour faire l'entrainement")
         st.code(code_grid,language='python')
@@ -262,7 +266,7 @@ plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
 st.pyplot(barplot_eli5.get_figure())
 
-st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées")
+st.write("finalement, la représentation graphique du PCA a été crée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultées à obtenir de bonnes prédictions")
 
 plt.clf()
 
