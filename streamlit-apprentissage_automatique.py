@@ -58,7 +58,7 @@ st.header(intro_text)
 st.header("Présentation des données")
 
 st.write('''Des données issues des combats en UFC (Utimate Fighting Championship) ayant eu lieux entre 2010 et 2023 sont étés récoltées en utilisant Kaggle (2010-2022) et le "web-scrapping" (2023) afin de composer un jeu de données ayant pour but de faire de la classification binaire''')
-st.write('''Elles furent analysées et traitées (voir section méthodologie), pour faire des prédiction qui sont présentées dans la section résultats.''')
+st.write('''Pour fin de facilité, les données sont présentées, suivit des résultats. La méthodologie est présentée en dernier (analyse exploratoire et traitement des données).''')
 with st.container():
     tab1,tab2 = st.tabs(['Données brutes', 'Données traitées'])
 
@@ -70,7 +70,6 @@ with st.container():
         st.subheader("Données traitées")
         st.dataframe(df_preprocessed)
         st.write("Les données traitées ont ",shape_df_processed_lignes," lignes et ",shape_df_processed_colonnes," colonnes.")
-        st.write("elles furent traitées suite à l'analyse exploratoire")
 
 st.divider()
 
@@ -104,13 +103,14 @@ with st.container():
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure())
+        st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
         st.write('''Toutes les variables de base du MLP de SKlearn ont étés utilisé à l'exception de nombre d'iterations et du "solver" puisque nous avons eu des problèmes de convergence.''') 
         st.write('Voici le code utlisé pour entainer le modèle')
         st.code('''from sklearn.neural_network import MLPClassifier
 
 #Entrainement du modèle
 ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, Y_train)''')
-        st.markdown("Le taux de bonne classification est de :red[**54.1%**]")
+        
 
     with grid: #gridsearch
         plt.clf()
@@ -309,6 +309,7 @@ Explanation_text_traitement_donnes='''
 4. Une variable montrant la différence de rang entre les combattants fut crée.
 5. En raison de leur très petit nombre, les égalités furent retirées.  
 6. Ajustement des anomalies ou des valeures manquantes.
+7. Les données furent standardisées et centrées avec un moyenne de 0 et un écart type de 1.
 '''
 st.markdown(Explanation_text_traitement_donnes)
 
