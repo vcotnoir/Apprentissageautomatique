@@ -73,7 +73,7 @@ with st.container():
 
 st.divider()
 
-st.header('Résultats et entrainement des modèles')
+st.header('Résultats')
 
 explication = '''Les modèles suivants furent essayés, les résultats sont présentés initialement et le code par la suite.  
 L'ordre de présentation représente l'ordre dans lesquels les modèles furent testés.'''
