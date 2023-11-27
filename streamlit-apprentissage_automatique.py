@@ -275,7 +275,8 @@ st.write("L'importance des varialbes de notre meilleur modèle (MLP utilisant Ra
 
 #création du graph
 plt.clf()
-barplot_eli5=sns.barplot(df_eli5.iloc[:,:10])
+vert = sns.light_palette("seagreen",12,reverse=True)
+barplot_eli5=sns.barplot(df_eli5.iloc[:,:10],palette=vert)
 plt.xticks(rotation=30,ha='right')
 plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
