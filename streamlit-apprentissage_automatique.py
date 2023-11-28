@@ -246,6 +246,7 @@ st.divider()
 
 st.header("Analyse")
 st.write("Nos résultats n'étant pas à la hauteur de nos attentes, une analyse nous a permis de comprendre les principales raisons de ce manque de performance.")
+st.subheader("Permutation des données")
 st.write("L'importance des variables de notre meilleur modèle (MLP utilisant Randomsearch) fut obtenue.")
 
 #création du graph
@@ -265,6 +266,7 @@ st.markdown(analyse_graphique_importance)
 st.write("finalement, la représentation graphique du PCA a été créée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultés à obtenir de bonnes prédictions")
 
 #création du PCA
+st.subheader("Principal Component Analysis")
 plt.clf()
 
 df_pca_array=np.array(df_pca)
