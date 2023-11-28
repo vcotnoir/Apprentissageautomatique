@@ -124,7 +124,7 @@ ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, 
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
-        st.markdown("Le taux de bonne classification est de :red[**57,8%**]")
+        st.markdown("Le taux de bonne classification est de :green[**57,8%**]")
         # code utilisé
         code_grid='''from sklearn.model_selection import GridSearchCV
 
