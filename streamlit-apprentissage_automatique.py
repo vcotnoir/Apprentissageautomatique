@@ -130,12 +130,12 @@ ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, 
 
 ufc = MLPClassifier(random_state=42)
 random.seed(1234)
-param_grid={'hidden_layer_sizes': [10,20,50,100,120,150],
+param_grid={'hidden_layer_sizes': [10,20,75],
        'solver':['sgd','lbfgs'],
-       'alpha':[0.0001,0.001,0.01,0.1,1],
-       'batch_size':[256,512],
-       'learning_rate_init':[0.001,0.01,0.1,0.2],
-       'momentum':[0.1,0.3,0.6,0.9],
+       'alpha':[0.0001,0.001],
+       'batch_size':[256],
+       'learning_rate_init':[0.001,0.01,0.1],
+       'momentum':[0.1,0.3],
        'max_iter':[4000]}
 
 #création du modèle
