@@ -25,6 +25,9 @@ df_correlation = pd.read_csv(url_df_correlation)
 url_predictions_random = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/clf_rand_pred.csv'
 df_MLP_random = pd.read_csv(url_predictions_random)
 
+url_predictions_grid = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/clf_grid_pred.csv'
+df_MLP_grid = pd.read_csv(url_predictions_grid)
+
 url_preductions_XG = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufcboost_pred.csv'
 df_xgboost = pd.read_csv(url_preductions_XG)
 
@@ -114,14 +117,14 @@ ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, 
 
     with grid: #gridsearch
         plt.clf()
-        cm=confusion_matrix(Y_test,df_xgboost)
+        cm=confusion_matrix(Y_test,df_MLP_grid)
         confusion= sns.heatmap(cm, annot=True, fmt='g')
         # labels, title and ticks
         confusion.set_xlabel('Gagnant prédit');confusion.set_ylabel('Véritable gagnant'); 
         confusion.set_title('Matrice de confusion'); 
         confusion.xaxis.set_ticklabels(['Bleu', 'Rouge']); confusion.yaxis.set_ticklabels(['Bleu', 'Rouge'])
         st.pyplot(confusion.get_figure()) 
-        st.markdown("Le taux de bonne classification est de :red[**non-obtenu, trop long à rouler**]")
+        st.markdown("Le taux de bonne classification est de :red[**57,8%**]")
         # code utilisé
         code_grid='''from sklearn.model_selection import GridSearchCV
 
