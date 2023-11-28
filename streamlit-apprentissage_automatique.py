@@ -261,10 +261,10 @@ plt.title("Poids de l'importance des variables")
 plt.ylabel('Poids')
 st.pyplot(barplot_eli5.get_figure())
 
-analyse_graphique_importance = '''L'analyse des 10 variables les plus significatives nous permet de remarquer que les données plus avancées ont une utilité qui est limitée.  
-Des 10 variables, seulement 2 variables poussées se hissent dans la liste (B_avg_SIG_STR_landed et B_avg_SIG_STR_landed). Ce sont des variables qui mesurent le nombre de couts significatifs qui sont lancés par les combattants.  
-5 des variables sont liées à l'âge ou aux mesures physiques des combattants (B_age, age_dif, R_height_cms, B_Reach_cms, R_Reach_cms).  
-Les variables restantes sont des variables liées au rang et au nombre de défaites.'''
+analyse_graphique_importance = '''L'analyse des 10 variables les plus significatives nous permet de remarquer que les données plus avancées (comme le nombre de couts significatifs, qui nécéssite une évaluation) ont une utilité qui est limitée.  
+Des 10 variables, seulement 3 variables avancées se hissent dans la liste B_avg_SIG_STR_pct, qui représente le nombre de cours significatif sur le nombre de couts lancés, B_avg_SIG_STR_landed qui représente le nombre de couts significatifs) et B_avg_TD_pct, qui représente le nombre d'amenées au sol réussies sur le nombre total essayé est la seule variable.  
+4 des variables sont liées à l'âge ou aux mesures physiques des combattants (B_age, R_age, height_dif, reach_dif).  
+Les 3 variables restantes sont en liens avec les fiches de victoires et défaites des combattants.'''
 st.markdown(analyse_graphique_importance)
 st.write("finalement, la représentation graphique du PCA a été créée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultés à obtenir de bonnes prédictions")
 
