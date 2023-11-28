@@ -5,7 +5,6 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score, recall_score,confusion_matrix,ConfusionMatrixDisplay, precision_score
 from matplotlib import pyplot as plt
 from sklearn.decomposition import PCA
-import streamlit.components.v1 as components
 
 #importation des données
 url = 'https://raw.githubusercontent.com/vcotnoir/Apprentissageautomatique/main/ufc-master-final.csv'
@@ -55,9 +54,6 @@ shape_df_processed_lignes=shape_df_processed[0]
 
 st.title('Apprentissage automatique - prédictions UFC')
 
-intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC (problème de classification binaire)'''
-components.iframe("https://docs.streamlit.io/en/latest")
-components.iframe("https://www.randomservices.org/")
 st.header(intro_text)
 
 st.header("Présentation des données")
