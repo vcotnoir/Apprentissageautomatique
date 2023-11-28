@@ -130,6 +130,8 @@ ufc = MLPClassifier(random_state=42,max_iter=4000,solver='sgd').fit(X_train_df, 
 
 ufc = MLPClassifier(random_state=42)
 random.seed(1234)
+
+#Paramètres utilisés
 param_grid={'hidden_layer_sizes': [10,20,75],
        'solver':['sgd','lbfgs'],
        'alpha':[0.0001,0.001],
@@ -189,7 +191,8 @@ return getthatlist'''
 hidden_random=getthatint(10,300,50)
 alpha_random=getthatfloat(0.0001,1,50)
 learning_rate_init_random=getthatfloat(0.0001,1)
-#number of iterations kept to 10, default setting for n_iter
+
+#Paramètres utilisés
 param_random={'hidden_layer_sizes': hidden_random,
        'solver':['sgd','lbfgs'],
        'alpha':alpha_random,
@@ -237,7 +240,7 @@ ufcboost.fit(X_train, Y_train)''')
         st.code('''from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
 
-Création du PCA
+#Création du PCA
 pca=PCA(n_components=2)
 x_train_pca=pca.fit_transform(X_train,Y_train)
 x_test_pca=pca.transform(X_test)
