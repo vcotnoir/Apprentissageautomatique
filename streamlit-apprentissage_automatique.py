@@ -266,7 +266,7 @@ st.pyplot(barplot_eli5.get_figure())
 
 analyse_graphique_importance = '''L'analyse des 10 variables les plus significatives nous permet de remarquer que les données plus avancées ont une utilité qui est limitée dans la prédiction.  
 Des 10 variables, seulement 3 variables avancées se hissent dans la liste. 
-- B_avg_SIG_STR_pct, qui représente le nombre de cours significatif sur le nombre de couts lancés, 
+- R_avg_SIG_STR_pct, qui représente le nombre de cours significatif sur le nombre de couts lancés, 
 - B_avg_SIG_STR_landed qui représente le nombre de couts significatifs) 
 - B_avg_TD_pct, qui représente le nombre d'amenées au sol réussies sur le nombre total essayé est la seule variable.  
 
@@ -275,7 +275,7 @@ Des 10 variables, seulement 3 variables avancées se hissent dans la liste.
 - R_age 
 - height_dif 
 - reach_dif  
-  
+
 Les 3 variables restantes sont en liens avec les fiches de victoires et défaites des combattants.'''
 st.markdown(analyse_graphique_importance)
 st.write("finalement, la représentation graphique du PCA a été créée pour remarquer que les gagnants sont difficilement différenciables, expliquant nos difficultés à obtenir de bonnes prédictions")
