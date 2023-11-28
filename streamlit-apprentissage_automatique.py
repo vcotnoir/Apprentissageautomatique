@@ -54,6 +54,10 @@ shape_df_processed_lignes=shape_df_processed[0]
 
 st.title('Apprentissage automatique - prédictions UFC')
 
+html_string = "<h3>this is an html string</h3>"
+
+st.markdown(html_string, unsafe_allow_html=True)
+
 intro_text='''But: Faire les meilleures prédictions possibles sur les combats UFC (problème de classification binaire)'''
 
 st.header(intro_text)
